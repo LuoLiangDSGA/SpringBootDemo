@@ -4,11 +4,14 @@ import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
+import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.DbType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -108,14 +111,14 @@ public class MpGenerator {
         InjectionConfig cfg = new InjectionConfig() {
             @Override
             public void initMap() {
-                Map<String, Object> map = new HashMap<String, Object>();
+                Map<String, Object> map = new HashMap<>(1);
                 map.put("abc", this.getConfig().getGlobalConfig().getAuthor() + "-mp");
                 this.setMap(map);
             }
         };
 
         // 自定义 xxList.jsp 生成
-//        List<FileOutConfig> focList = new ArrayList<FileOutConfig>();
+        List<FileOutConfig> focList = new ArrayList<FileOutConfig>();
 //        focList.add(new FileOutConfig("/template/list.jsp.vm") {
 //            @Override
 //            public String outputFile(TableInfo tableInfo) {
@@ -125,21 +128,21 @@ public class MpGenerator {
 //        });
 //        cfg.setFileOutConfigList(focList);
 //        mpg.setCfg(cfg);
-//
-//        // 调整 xml 生成目录演示
-//        focList.add(new FileOutConfig("/templates/mapper.xml.vm") {
-//            @Override
-//            public String outputFile(TableInfo tableInfo) {
-//                return "/develop/code/xml/" + tableInfo.getEntityName() + ".xml";
-//            }
-//        });
-//        cfg.setFileOutConfigList(focList);
-//        mpg.setCfg(cfg);
+
+        // 调整 xml 生成目录演示
+        focList.add(new FileOutConfig("/templates/mapper.xml.vm") {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                return "/develop/code/xml/" + tableInfo.getEntityName() + ".xml";
+            }
+        });
+        cfg.setFileOutConfigList(focList);
+        mpg.setCfg(cfg);
 
         // 关闭默认 xml 生成，调整生成 至 根目录
-        TemplateConfig tc = new TemplateConfig();
-        tc.setXml(null);
-        mpg.setTemplate(tc);
+//        TemplateConfig tc = new TemplateConfig();
+//        tc.setXml(null);
+//        mpg.setTemplate(tc);
 
         // 自定义模板配置，可以 copy 源码 mybatis-plus/src/main/resources/templates 下面内容修改，
         // 放置自己项目的 src/main/resources/templates 目录下, 默认名称一下可以不配置，也可以自定义模板名称
