@@ -71,8 +71,11 @@ public class MpGenerator {
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         // strategy.setCapitalMode(true);// 全局大写命名 ORACLE 注意
-        strategy.setTablePrefix(new String[]{"tlog_", "tsys_"});// 此处可以修改为您的表前缀
-        strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
+        // 此处可以修改为您的表前缀
+        strategy.setTablePrefix(new String[]{"tlog_", "tsys_"});
+        // 表名生成策略
+        strategy.setNaming(NamingStrategy.underline_to_camel);
+        strategy.setEntityLombokModel(true);
         // strategy.setInclude(new String[] { "user" }); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表
         // 自定义实体父类
