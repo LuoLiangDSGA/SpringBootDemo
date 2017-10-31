@@ -39,7 +39,7 @@ public class MpGenerator {
         // XML ResultMap
         gc.setBaseResultMap(true);
         // XML columList
-        gc.setBaseColumnList(false);
+        gc.setBaseColumnList(true);
         gc.setAuthor("罗亮");
 
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
