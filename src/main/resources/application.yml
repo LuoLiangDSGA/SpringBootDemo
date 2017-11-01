@@ -42,4 +42,4 @@ logging:
   path: ./logs
 
 server:
-  port: ${random.int[8081,8090]}
+  port: 8090
