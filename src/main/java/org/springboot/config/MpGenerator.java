@@ -50,7 +50,7 @@ public class MpGenerator {
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setDbType(DbType.MYSQL);
         dsc.setTypeConvert(new MySqlTypeConvert() {
-            // 自定义数据库表字段类型转换【可选】
+            // 自定义数据库表字段类型转换
             @Override
             public DbColumnType processTypeConvert(String fieldType) {
                 System.out.println("转换类型：" + fieldType);
