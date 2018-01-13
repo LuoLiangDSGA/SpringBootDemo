@@ -1,9 +1,12 @@
 package org.springboot.controller;
 
 
+import org.springboot.service.IUserService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -16,9 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+    @Resource
+    private IUserService userService;
 
     @RequestMapping(value = "get", method = RequestMethod.GET)
     public String get() {
+        userService.test();
         return "get";
     }
 }
