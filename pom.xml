@@ -160,6 +160,7 @@
                 </dependencies>
             </plugin>
 
+            <!--项目最后打包必须在proguard混淆之后，这时候打包的项目已经包含了混淆的代码-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
