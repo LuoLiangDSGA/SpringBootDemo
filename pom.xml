@@ -89,6 +89,7 @@
             <artifactId>velocity-engine-core</artifactId>
             <version>${velocity-engine.version}</version>
         </dependency>
+        
     </dependencies>
 
     <build>
